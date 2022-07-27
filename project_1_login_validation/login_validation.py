@@ -27,7 +27,7 @@ def getdetails():
                  f.write(info)
     else:
      print("Please enter valid password");
-     print("done!!!!"); 
+     print("done"); 
 
 
 def checkdetails():
