@@ -1,3 +1,5 @@
+from curses.ascii import isdigit, islower, isupper
+
 def choices():
     print("Please choose what you would like to do.")
     choice = int(input("For Signing Up Type 1 and For Signing in Type 2: "))
@@ -7,20 +9,26 @@ def choices():
        return checkdetails()
     else:
        raise TypeError
-
 def getdetails():
     print("Please Provide")
     name = str(input("Name: "))
     password = str(input("Password: "))
-    f = open("C:/guvi_projects/project_1_login_validation/User_Data.txt",'r')
-    info = f.read()
-    print(f.read())
-    if name in info:
-        return "Name Unavailable. Please Try Again"
-    f.close()
-    f = open("C:/guvi_projects/project_1_login_validation/User_Data.txt",'w')
-    info = info + " " +name + " " + password
-    f.write(info)
+    if(len(password)>=5 and len(password)<16):
+        if(str(isdigit(password))):
+            if(str(isupper(password))):
+                if(str(islower(password))):
+                 f = open("C:/guvi_projects/project_1_login_validation/User_Data.txt",'r')
+                 info = f.read()
+                 if name in info:
+                  return "Name Unavailable. Please Try Again"
+                 f.close()
+                 f = open("C:/guvi_projects/project_1_login_validation/User_Data.txt",'w')
+                 info = info + " " +name + " " + password
+                 f.write(info)
+    else:
+     print("Please enter valid password");
+     print("done!!!!"); 
+
 
 def checkdetails():
     print("Please Provide")
@@ -38,5 +46,4 @@ def checkdetails():
             return "Password entered is wrong"
     else:
         return "Name not found. Please Sign Up."
-
 print(choices())
