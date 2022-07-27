@@ -1,7 +1,7 @@
 from curses.ascii import isdigit, islower, isupper
 
 def choices():
-    print("Please choose what you would like to do.")
+    print("Please choose your option.")
     choice = int(input("For Signing Up Type 1 and For Signing in Type 2: "))
     if choice == 1:
        return getdetails()
